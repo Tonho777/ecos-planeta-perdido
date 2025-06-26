@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecos de un Planeta Perdido - El Juego</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0; /* Light text */
+        }
+        /* Custom styles for the parameter bars (visual representation idea) */
+        .parameter-bar-container {
+            @apply bg-gray-700 rounded-full h-8 overflow-hidden;
+        }
+        .parameter-bar-fill {
+            height: 100%;
+            transition: width 0.5s ease-in-out;
+            @apply rounded-full;
+        }
+        .bg-green-600-gradient {
+            background-image: linear-gradient(to right, #4CAF50, #8BC34A); /* Green gradient for safe zone */
+        }
+        .bg-yellow-600-gradient {
+            background-image: linear-gradient(to right, #FFC107, #FFEB3B); /* Yellow gradient for caution zone */
+        }
+        .bg-red-600-gradient {
+            background-image: linear-gradient(to right, #F44336, #FF5722); /* Red gradient for critical zone */
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="min-h-screen flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8">
+        <!-- Hero Section -->
+        <header class="text-center mb-16 max-w-4xl">
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 leading-tight rounded-lg p-2">
+                Ecos de un Planeta Perdido
+            </h1>
+            <p class="mt-6 text-xl sm:text-2xl text-gray-300">
+                Salva tu Civilización, Alienígena
+            </p>
+            <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+                ¡Bienvenidos, seres intergalácticos! ¿Están listos para una misión crucial? Su civilización está al borde del colapso, tal como les ocurrió a sus mundos de origen, devastados por una economía lineal insostenible. Es su turno de aprender de los errores del pasado y guiar a su pueblo hacia un futuro circular.
+            </p>
+        </header>
+
+        <!-- What is the Game About Section -->
+        <section class="bg-gray-800 p-8 rounded-xl shadow-lg mb-16 max-w-4xl w-full">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-500 mb-6 text-center">
+                ¿De Qué Trata el Juego?
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed">
+                "Ecos de un Planeta Perdido" es un juego de mesa cooperativo y competitivo para dos equipos. Cada equipo asume el rol de una <strong class="text-yellow-300">raza alienígena única</strong>, con habilidades especiales, cuyo objetivo es mantener a salvo su civilización. Lo harán tomando <strong class="text-yellow-300">decisiones estratégicas</strong> frente a eventos inspirados en las consecuencias caricaturizadas del Antropoceno. ¡El equipo que logre un mejor equilibrio y evite que sus parámetros caigan en zonas críticas, gana, demostrando su maestría en la <strong class="text-green-400">economía circular</strong>!
+            </p>
+        </section>
+
+        <!-- Parameters Section -->
+        <section class="bg-gray-800 p-8 rounded-xl shadow-lg mb-16 max-w-4xl w-full">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-lime-500 mb-8 text-center">
+                Tus Parámetros de Civilización: Cinco Pilares Vitales
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8">
+                Tu civilización se representa mediante cinco barras de parámetros dinámicas. Cada una tiene zonas de color: <strong class="text-green-500">Verde (Seguro)</strong>, <strong class="text-yellow-500">Amarillo (Precaución)</strong> y <strong class="text-red-500">Rojo (Crítico)</strong>. ¡Si múltiples parámetros caen en rojo, tu civilización podría enfrentar la extinción!
+            </p>
+
+            <div class="space-y-8">
+                <!-- Parameter 1: Recursos Renovables y No Renovables -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-2">1. Recursos Renovables y No Renovables</h3>
+                    <div class="parameter-bar-container">
+                        <div class="parameter-bar-fill w-3/4 bg-green-600-gradient"></div> <!-- Example: 75% in green zone -->
+                    </div>
+                    <p class="text-sm text-gray-400 mt-2">
+                        <span class="text-green-500 font-medium">Verde:</span> Abundancia y uso sostenible, reciclaje eficiente.<br>
+                        <span class="text-yellow-500 font-medium">Amarillo:</span> Escasez, dependencia de no renovables, reciclaje mejorable.<br>
+                        <span class="text-red-500 font-medium">Rojo:</span> Agotamiento crítico, sobreproducción de residuos.<br>
+                        <span class="text-gray-500">Dinámica:</span> Aumenta con reciclaje y energías limpias; disminuye con consumo excesivo y combustibles fósiles.
+                    </p>
+                </div>
+
+                <!-- Parameter 2: Calidad del Aire y Agua -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-2">2. Calidad del Aire y Agua</h3>
+                    <div class="parameter-bar-container">
+                        <div class="parameter-bar-fill w-2/3 bg-green-600-gradient"></div> <!-- Example: 66% in green zone -->
+                    </div>
+                    <p class="text-sm text-gray-400 mt-2">
+                        <span class="text-green-500 font-medium">Verde:</span> Aire puro, agua potable, ecosistemas saludables.<br>
+                        <span class="text-yellow-500 font-medium">Amarillo:</span> Contaminación leve, problemas de saneamiento.<br>
+                        <span class="text-red-500 font-medium">Rojo:</span> Smog severo, agua no potable, ecosistemas colapsando.<br>
+                        <span class="text-gray-500">Dinámica:</span> Mejora con descarbonización y tratamiento de aguas; empeora con emisiones industriales y vertidos.
+                    </p>
+                </div>
+
+                <!-- Parameter 3: Bienestar Social y Cohesión Comunitaria -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-2">3. Bienestar Social y Cohesión Comunitaria</h3>
+                    <div class="parameter-bar-container">
+                        <div class="parameter-bar-fill w-1/2 bg-yellow-600-gradient"></div> <!-- Example: 50% in yellow zone -->
+                    </div>
+                    <p class="text-sm text-gray-400 mt-2">
+                        <span class="text-green-500 font-medium">Verde:</span> Ciudadanos satisfechos, equidad, alta calidad de vida.<br>
+                        <span class="text-yellow-500 font-medium">Amarillo:</span> Malestar social, desigualdad, conflictos menores.<br>
+                        <span class="text-red-500 font-medium">Rojo:</span> Revueltas, pobreza extrema, colapso de servicios.<br>
+                        <span class="text-gray-500">Dinámica:</span> Crece con programas de educación y justicia social; disminuye con desempleo e injusticia.
+                    </p>
+                </div>
+
+                <!-- Parameter 4: Innovación y Adaptación Tecnológica -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-2">4. Innovación y Adaptación Tecnológica</h3>
+                    <div class="parameter-bar-container">
+                        <div class="parameter-bar-fill w-3/5 bg-green-600-gradient"></div> <!-- Example: 60% in green zone -->
+                    </div>
+                    <p class="text-sm text-gray-400 mt-2">
+                        <span class="text-green-500 font-medium">Verde:</span> Desarrollo de tecnologías limpias y soluciones circulares.<br>
+                        <span class="text-yellow-500 font-medium">Amarillo:</span> Innovación estancada, poca inversión en I+D sostenible.<br>
+                        <span class="text-red-500 font-medium">Rojo:</span> Falta de capacidad tecnológica, dependencia de lo obsoleto.<br>
+                        <span class="text-gray-500">Dinámica:</span> Aumenta con inversión en I+D+i verde; disminuye con barreras a la innovación.
+                    </p>
+                </div>
+
+                <!-- Parameter 5: Biodiversidad y Resiliencia Ecosistémica -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-2">5. Biodiversidad y Resiliencia Ecosistémica</h3>
+                    <div class="parameter-bar-container">
+                        <div class="parameter-bar-fill w-1/3 bg-red-600-gradient"></div> <!-- Example: 33% in red zone -->
+                    </div>
+                    <p class="text-sm text-gray-400 mt-2">
+                        <span class="text-green-500 font-medium">Verde:</span> Ecosistemas diversos y robustos, especies protegidas.<br>
+                        <span class="text-yellow-500 font-medium">Amarillo:</span> Pérdida de algunas especies, hábitats fragmentados.<br>
+                        <span class="text-red-500 font-medium">Rojo:</span> Extinción masiva, colapso de cadenas alimentarias.<br>
+                        <span class="text-gray-500">Dinámica:</span> Mejora con reforestación y protección natural; empeora con expansión urbana y monocultivos.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alien Races Section -->
+        <section class="bg-gray-800 p-8 rounded-xl shadow-lg mb-16 max-w-4xl w-full">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-500 mb-8 text-center">
+                Las Razas Alienígenas: Tu Habilidad Especial
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8">
+                Cada equipo elegirá una de las razas alienígenas, cada una con una habilidad única que puede ser clave para la supervivencia de su civilización:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-300 mb-2">K'tharr (Gigantes Recicladores)</h3>
+                    <p class="text-gray-400">Convertir desechos en recursos.</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-300 mb-2">Lyrians (Mentes Conectadas)</h3>
+                    <p class="text-gray-400">Compartir excedentes para mitigar impactos.</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-300 mb-2">Zorgons (Ingenieros Adaptativos)</h3>
+                    <p class="text-gray-400">Ignorar o transformar efectos negativos de eventos.</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-300 mb-2">Elara (Curanderos de Ecosistemas)</h3>
+                    <p class="text-gray-400">Restaurar parámetros críticos.</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg md:col-span-2">
+                    <h3 class="text-2xl font-semibold text-purple-300 mb-2">Silvanos (Guardianes de la Biodiversidad)</h3>
+                    <p class="text-gray-400">Mitigar eventos que afectan la vida planetaria.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="bg-gray-800 p-8 rounded-xl shadow-lg mb-16 max-w-4xl w-full">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500 mb-8 text-center">
+                Eventos del Antropoceno: Desafíos y Decisiones
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8">
+                ¡Prepárense para enfrentar eventos inesperados extraídos de la era del Antropoceno, pero con un toque caricaturesco! Cada ronda, se revelará una carta de evento que afectará a los parámetros de ambas civilizaciones. Luego, deberán discutir y elegir una decisión que tendrá consecuencias directas.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Event Example 1 -->
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-cyan-300 mb-2">La Gran Plaga de los Móviles Obsoletos</h3>
+                    <p class="text-gray-400 text-sm">
+                        Una montaña de dispositivos electrónicos inservibles bloquea la luz.
+                        <br><span class="font-bold">Decisiones:</span> ¿Reciclan con esfuerzo o los lanzan al espacio con consecuencias?
+                    </p>
+                </div>
+                <!-- Event Example 2 -->
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-cyan-300 mb-2">Las Vacas Mutantes Emisoras de Metano</h3>
+                    <p class="text-gray-400 text-sm">
+                        Rebaños intergalácticos que eructan nubes tóxicas.
+                        <br><span class="font-bold">Decisiones:</span> ¿Cambian a una dieta sostenible o construyen mega-granjas que contaminan más?
+                    </p>
+                </div>
+                <!-- Event Example 3 -->
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-cyan-300 mb-2">La Fiebre del Oro Asteroidal Contaminado</h3>
+                    <p class="text-gray-400 text-sm">
+                        Riqueza mineral tóxica.
+                        <br><span class="font-bold">Decisiones:</span> ¿Optan por la minería circular o la explotación rápida y destructiva?
+                    </p>
+                </div>
+                <!-- Event Example 4 -->
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-cyan-300 mb-2">El Gran Bloqueo de la Moda Rápida Interdimensional</h3>
+                    <p class="text-gray-400 text-sm">
+                        Ropa desechable que inunda los vertederos espaciales.
+                        <br><span class="font-bold">Decisiones:</span> ¿Fomentan la moda lenta o crean agujeros negros para la basura?
+                    </p>
+                </div>
+                <!-- Event Example 5 -->
+                <div class="bg-gray-700 p-6 rounded-lg md:col-span-2">
+                    <h3 class="text-xl font-semibold text-cyan-300 mb-2">El Síndrome de la 'Huella Estelar Desmedida'</h3>
+                    <p class="text-gray-400 text-sm">
+                        Viajes espaciales descontrolados que llenan la atmósfera de gases.
+                        <br><span class="font-bold">Decisiones:</span> ¿Invierten en transporte público eficiente o prohíben los viajes, afectando el bienestar social?
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Play Section -->
+        <section class="bg-gray-800 p-8 rounded-xl shadow-lg mb-16 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-500 mb-6">
+                ¿Por Qué Jugar "Ecos de un Planeta Perdido"?
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                Este juego no solo busca entretener, sino también <strong class="text-teal-300">concienciar</strong> sobre los desafíos de la economía lineal y el potencial de la <strong class="text-teal-300">economía circular</strong>. Al tomar decisiones, experimentarán las complejas interacciones entre los recursos, el medio ambiente y la sociedad. ¡Aprenderán que cada elección importa y que el futuro de su civilización está en sus manos!
+            </p>
+            <a href="#" class="inline-block px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold text-xl rounded-full shadow-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105">
+                ¡Están listos para la misión!
+            </a>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 text-sm mt-10">
+            <p>&copy; 2025 Ecos de un Planeta Perdido. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
