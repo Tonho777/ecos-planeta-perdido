@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecos de un Planeta Perdido - El Juego</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #16191f;
+            color: #e2e8f0;
+        }
+        .parameter-bar-container {
+            background: #374151;
+            border-radius: 9999px;
+            height: 2rem;
+            overflow: hidden;
+        }
+        .parameter-bar-fill {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.8s cubic-bezier(.4,2,.3,1);
+        }
+        .bg-green-gradient {
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+        }
+        .bg-yellow-gradient {
+            background: linear-gradient(to right, #FFC107, #FFEB3B);
+        }
+        .bg-red-gradient {
+            background: linear-gradient(to right, #F44336, #FF5722);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <main class="min-h-screen flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8">
+        <!-- HERO -->
+        <header class="text-center mb-16 max-w-4xl">
+            <h1 class="text-6xl sm:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 leading-tight rounded-lg p-2">
+                Ecos de un Planeta Perdido
+            </h1>
+            <p class="mt-6 text-2xl text-gray-300 font-semibold">Salva tu Civilización, Alienígena</p>
+            <p class="mt-4 text-lg text-gray-400 mx-auto max-w-2xl">
+                Tu civilización está al borde del colapso. Aprende de los errores del pasado y guía a tu pueblo hacia un futuro circular. ¿Estás listo para la misión final?
+            </p>
+        </header>
+
+        <!-- GAME OVERVIEW -->
+        <section class="bg-gray-800 p-8 rounded-xl shadow-lg mb-16 max-w-4xl w-full">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-500 mb-6 text-center">
+                ¿De Qué Trata el Juego?
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed">
+                <b>Ecos de un Planeta Perdido</b> es un juego de mesa cooperativo y competitivo para dos equipos, cada uno representando una <span class="text-yellow-300 font-bold">raza alienígena</span> con habilidades únicas. 
+                El objetivo: tomar <span class="text-green-400 font-bold">decisiones estratégicas</span> para mantener tu civilización a salvo frente a eventos caricaturescos inspirados en los excesos del Antropoceno. ¡El equipo que logre el mejor equilibrio y evite zonas críticas gana!
+            </p>
+        </section>
+
+        <!-- PARAMETERS SECTION -->
+        <section class="bg-gray-800 p-8 rounded-xl shadow-lg mb-16 max-w-4xl w-full">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-lime-500 mb-8 text-center">
+                Parámetros: Cinco Pilares Vitales
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8">
+                Tu civilización depende de cinco parámetros. Cada barra tiene zonas de color: <span class="text-green-500">Verde (Seguro)</span>, <span class="text-yellow-500">Amarillo (Precaución)</span>, <span class="text-red-500">Rojo (Crítico)</span>. ¡Si varios caen en rojo, tu civilización peligra!
+            </p>
+            <div id="parameters" class="space-y-8"></div>
+        </section>
+
+        <!-- RACES SECTION -->
+        <section class="bg-gray-800 p-8 rounded-xl shadow-lg mb-16 max-w-4xl w-full">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-500 mb-8 text-center">
+                Razas Alienígenas: Tu Habilidad Especial
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-300 mb-2">K'tharr</h3>
+                    <p class="text-gray-400">Gigantes recicladores: <span class="italic">Transforman desechos en recursos.</span></p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-300 mb-2">Lyrians</h3>
+                    <p class="text-gray-400">Mentes conectadas: <span class="italic">Comparten excedentes y mitigan impactos.</span></p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-300 mb-2">Zorgons</h3>
+                    <p class="text-gray-400">Ingenieros adaptativos: <span class="italic">Ignoran o modifican efectos negativos de eventos.</span></p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-300 mb-2">Elara</h3>
+                    <p class="text-gray-400">Curanderos de ecosistemas: <span class="italic">Restauran parámetros críticos.</span></p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg md:col-span-2">
+                    <h3 class="text-2xl font-semibold text-purple-300 mb-2">Silvanos</h3>
+                    <p class="text-gray-400">Guardianes de la biodiversidad: <span class="italic">Mitigan eventos que afectan la vida planetaria.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EVENTS SECTION -->
+        <section class="bg-gray-800 p-8 rounded-xl shadow-lg mb-16 max-w-4xl w-full">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500 mb-8 text-center">
+                Eventos del Antropoceno: Desafíos y Decisiones
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-cyan-300 mb-2">La Gran Plaga de los Móviles Obsoletos</h3>
+                    <p class="text-gray-400 text-sm">
+                        Una montaña de dispositivos electrónicos bloquea la luz.
+                        <br><span class="font-bold">Decisiones:</span> ¿Reciclan con esfuerzo o los lanzan al espacio con consecuencias?
+                    </p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-cyan-300 mb-2">Las Vacas Mutantes Emisoras de Metano</h3>
+                    <p class="text-gray-400 text-sm">
+                        Rebaños intergalácticos que eructan nubes tóxicas.
+                        <br><span class="font-bold">Decisiones:</span> ¿Cambian a una dieta sostenible o construyen mega-granjas que contaminan más?
+                    </p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-cyan-300 mb-2">La Fiebre del Oro Asteroidal Contaminado</h3>
+                    <p class="text-gray-400 text-sm">
+                        Riqueza mineral tóxica.
+                        <br><span class="font-bold">Decisiones:</span> ¿Optan por la minería circular o la explotación rápida y destructiva?
+                    </p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-cyan-300 mb-2">El Gran Bloqueo de la Moda Rápida Interdimensional</h3>
+                    <p class="text-gray-400 text-sm">
+                        Ropa desechable que inunda los vertederos espaciales.
+                        <br><span class="font-bold">Decisiones:</span> ¿Fomentan la moda lenta o crean agujeros negros para la basura?
+                    </p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg md:col-span-2">
+                    <h3 class="text-xl font-semibold text-cyan-300 mb-2">El Síndrome de la 'Huella Estelar Desmedida'</h3>
+                    <p class="text-gray-400 text-sm">
+                        Viajes espaciales descontrolados que llenan la atmósfera de gases.
+                        <br><span class="font-bold">Decisiones:</span> ¿Invierten en transporte público eficiente o prohíben los viajes, afectando el bienestar social?
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY PLAY -->
+        <section class="bg-gray-800 p-8 rounded-xl shadow-lg mb-16 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-500 mb-6">
+                ¿Por Qué Jugar "Ecos de un Planeta Perdido"?
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                No solo es entretenido: <span class="text-teal-300 font-semibold">te conciencia</span> sobre los desafíos de la economía lineal y el poder de la <span class="text-teal-300 font-semibold">economía circular</span>. Descubre cómo tus decisiones afectan el destino de un mundo entero...
+            </p>
+            <a href="#" class="inline-block px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold text-xl rounded-full shadow-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300 transform hover:scale-105">
+                ¡Comienza tu misión!
+            </a>
+        </section>
+
+        <footer class="text-center text-gray-500 text-sm mt-10 mb-6">
+            <p>&copy; 2025 Ecos de un Planeta Perdido. Todos los derechos reservados.</p>
+        </footer>
+    </main>
+    <!-- Parameters Bar Script -->
+    <script>
+        // Puedes modificar estos valores para simular el estado de la civilización
+        const parameters = [
+            {
+                name: "Recursos Renovables y No Renovables",
+                percent: 75,
+                description: `
+                    <span class="text-green-500 font-medium">Verde:</span> Uso sostenible y reciclaje eficiente.<br>
+                    <span class="text-yellow-500 font-medium">Amarillo:</span> Escasez, dependencia de no renovables.<br>
+                    <span class="text-red-500 font-medium">Rojo:</span> Agotamiento crítico.<br>
+                    <span class="text-gray-400">Dinámica:</span> Mejora con reciclaje y energías limpias; empeora con consumo excesivo.
+                `
+            },
+            {
+                name: "Calidad del Aire y Agua",
+                percent: 65,
+                description: `
+                    <span class="text-green-500 font-medium">Verde:</span> Aire puro, agua potable.<br>
+                    <span class="text-yellow-500 font-medium">Amarillo:</span> Contaminación leve.<br>
+                    <span class="text-red-500 font-medium">Rojo:</span> Smog severo, agua no potable.<br>
+                    <span class="text-gray-400">Dinámica:</span> Mejora con descarbonización; empeora con emisiones industriales.
+                `
+            },
+            {
+                name: "Bienestar Social y Cohesión Comunitaria",
+                percent: 45,
+                description: `
+                    <span class="text-green-500 font-medium">Verde:</span> Ciudadanos satisfechos y equidad.<br>
+                    <span class="text-yellow-500 font-medium">Amarillo:</span> Desigualdad, conflictos menores.<br>
+                    <span class="text-red-500 font-medium">Rojo:</span> Revueltas, pobreza extrema.<br>
+                    <span class="text-gray-400">Dinámica:</span> Mejora con educación y justicia social; empeora con desempleo.
+                `
+            },
+            {
+                name: "Innovación y Adaptación Tecnológica",
+                percent: 60,
+                description: `
+                    <span class="text-green-500 font-medium">Verde:</span> Desarrollo de tecnologías limpias.<br>
+                    <span class="text-yellow-500 font-medium">Amarillo:</span> Innovación estancada.<br>
+                    <span class="text-red-500 font-medium">Rojo:</span> Dependencia de tecnologías obsoletas.<br>
+                    <span class="text-gray-400">Dinámica:</span> Mejora con I+D+i verde; empeora con barreras a la innovación.
+                `
+            },
+            {
+                name: "Biodiversidad y Resiliencia Ecosistémica",
+                percent: 30,
+                description: `
+                    <span class="text-green-500 font-medium">Verde:</span> Ecosistemas diversos y robustos.<br>
+                    <span class="text-yellow-500 font-medium">Amarillo:</span> Pérdida de algunas especies.<br>
+                    <span class="text-red-500 font-medium">Rojo:</span> Extinción masiva.<br>
+                    <span class="text-gray-400">Dinámica:</span> Mejora con reforestación; empeora con monocultivos y expansión urbana.
+                `
+            }
+        ];
+
+        function getBarClass(percent) {
+            if (percent > 66) return "bg-green-gradient";
+            if (percent > 33) return "bg-yellow-gradient";
+            return "bg-red-gradient";
+        }
+
+        function renderParameters() {
+            const container = document.getElementById("parameters");
+            container.innerHTML = "";
+            parameters.forEach(param => {
+                const barClass = getBarClass(param.percent);
+                container.innerHTML += `
+                    <div>
+                        <h3 class="text-2xl font-semibold text-blue-300 mb-2">${param.name}</h3>
+                        <div class="parameter-bar-container mb-1">
+                            <div class="parameter-bar-fill ${barClass}" style="width:0%"></div>
+                        </div>
+                        <p class="text-sm text-gray-300 mt-2">${param.description}</p>
+                    </div>
+                `;
+            });
+            // Animate the bars
+            setTimeout(() => {
+                document.querySelectorAll('.parameter-bar-fill').forEach((bar, i) => {
+                    bar.style.width = parameters[i].percent + '%';
+                });
+            }, 100);
+        }
+        document.addEventListener('DOMContentLoaded', renderParameters);
+    </script>
+</body>
+</html>
